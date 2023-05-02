@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songscapes</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        canvas {
+            display: block;
+        }
+        .trackbar{ background:#DDD; height:50px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
+.trackbar:nth-child(even) { background:#EEE; }
+.playbutton{ opacity:.8; display:block; float:left; width:19px; height:22px; margin:14px 0px 0px 14px; background:#EEE no-repeat; border:none; cursor:pointer; outline:none; }
+.playbutton:hover{ opacity:1; }
+.trackname{ float:left; color:#000; margin:12px 0px 0px 14px; font-size:20px; font-weight:bold; }
+    </style></head>
+<body>
+  
+    <canvas id="canvas"></canvas>
+    <script src="script.js"></script>
+    
+</body>
+<div id="trackbox"></div>
+</html>
+
+
+<!-- <audio id="background-music" loop style="display:none">
+        <source src="path/to/your/audio-file.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var backgroundMusic = document.getElementById("background-music");
+          backgroundMusic.volume = 0.5; // Adjust the volume (0.0 to 1.0)
+          backgroundMusic.play();
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var backgroundMusic = document.getElementById("background-music");
+          var toggleMusicButton = document.getElementById("toggle-music");
+      
+          backgroundMusic.volume = 0.5; // Adjust the volume (0.0 to 1.0)
+      
+          toggleMusicButton.addEventListener("click", function() {
+            if (backgroundMusic.paused) {
+              backgroundMusic.play();
+            } else {
+              backgroundMusic.pause();
+            }
+          });
+        });
+      </script>
+    <button id="toggle-music">Play/Pause Music</button> -->

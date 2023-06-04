@@ -17,6 +17,7 @@
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 var context2 = canvas.getContext("2d");
+var context3 = canvas.getContext("2d");
 var twopi = 2 * Math.PI;
 
 var songname = "";
@@ -42,11 +43,41 @@ function audioApp(){
     //songname = playingtrack;
 	var trackbox = _("trackbox");
 	var tracks = {
-	    "telepatia":["telepatia", "telepatia"],
-        "BlindingLights":["BlindingLights", "BlindingLights"],
-        "Summer":["Summer", "Summer"]
+	      "telepatia":["telepatia", "telepatia"],
+        "BlindingLights":["Blinding Lights", "BlindingLights"],
+        "Danielle":["Danielle", "Danielle"],
+        "EverythingIWanted":["EverythingIWanted", "EverythingIWanted"],
+        "Superstition":["Superstition", "Superstition"],
+
+
+        "TheColorViolet":["TheColorViolet", "TheColorViolet"],
+        "Genesis":["Genesis", "Genesis"],
+        "DancingQueen":["Dancing Queen", "DancingQueen"],
+        "GoodDays":["Good Days", "GoodDays"],
+        "YoureTheOne":["You're The One", "YoureTheOne"],
+
+        "FireForYou":["Fire For You", "FireForYou"],
+        "WhenIComeAround":["When I Come Around", "WhenIComeAround"],
+        "SummertimeSadness":["Summertime Sadness", "SummertimeSadness"],
+        "Breathe":["Breathe (In The Air)", "Breathe"],
+        "Tunnel":["Tunnel", "Tunnel"],
+
+        "Dreams":["Dreams", "Dreams"],
+        "Hypnotize":["Hypnotize", "Hypnotize"],
+        "Summer":["Summer", "Summer"],
+        "Ivy":["Ivy", "Ivy"],
+        "StarryNight":["Starry Night", "StarryNight"]
+
+
 		
 	};
+
+  //HYPNOTIZE - lightning
+  //EVERYTHING I WANTED - gray slowrain
+  //TUNNEL - rotate
+  //GOOD DAYS - colorful slowrain
+ // THE COLOR VIOLET - dark rain
+
     var getRandomSong = () => tracks[~~(Math.random() * tracks.length)];
 
 	for(var track in tracks){
@@ -210,8 +241,12 @@ var gm = 1;
 var fc = 0; //frame counter
 var palette;
 
-
-
+let c111 = document.getElementById("canvas");
+let ctx5 = c111.getContext("2d");
+ctx5.beginPath();
+ctx5.strokeStyle = "black";
+ctx5.rect(0, 0, 1500, 1000);
+ctx5.stroke();
 
 
 
@@ -228,70 +263,86 @@ if(song == ""){
 
 }
 if(song == "Summer"){
-  genre = "edm";
-  design = "rotating";
-  bpm = 128;
-  valence = 8.45;
-  danceability = 5.96;
-  energy = 8.56;
-}
-
-if(song == "BlindingLights"){
-  bpm = 172;
-  design = "lightning";
-  danceability = 5.1;
-  energy = 7.3;
-  valence = 3.3;
-}
-
-if(song == "telepatia"){
-  genre = "rnb";
-  design = "rain";
-  bpm = 84;
-  valence = 5.53;
-  danceability = 6.53;
-  energy = 5.3;
-}
-
-if(song == "Summertime Sadness"){
-  bpm = 127;
-  valence = 1.1;
-  energy = 8.1;
-  danceability = 5.72;
-}
-
-
-if(song == "Starboy"){
-  bpm = 187;
-  valence = 4.86;
-  danceability = 6.79;
-  energy = 5.87;
-}
-
-if(song == "good 4 u"){
-  bpm = 167;
-  danceability = 5.63;
-  energy = 6.64;
-  valence = 6.88;
+    genre = "edm";
+    bpm = 128;
+    design = "rotating";
+    cscheme = 'party';
+    valence = 8.45;
+    danceability = 5.96;
+    energy = 8.56;
+  }
   
-}
+  if(song == "BlindingLights"){
+    ctx.strokeStyle = red;
+    ctx.shadowStyle = red;
+    bpm = 172;
+    design = "rotating";
+    cscheme = 'redblue';
+    danceability = 5.1;
+    energy = 7.3;
+    valence = 3.3;
+  }
 
-
-if(song == "Hold On We're Going Home"){
-  genre = "rnb";
-  bpm = 101;
-  valence = 2.87;
-  danceability = 7.76;
-  energy = 4.13;
-}
-
-
-if(song == "Diamonds"){
-  bpm = 92;
-  valence = 3.93;
-  energy = 7.1;
-  danceability = 5.64;
-}
+  if(song == "StarryNight"){
+    bpm = 123;
+    design = "rotating";
+    cscheme = 'tropics';
+    danceability = 5.1;
+    energy = 7.3;
+    valence = 3.3;
+  }
+  
+  if(song == "telepatia"){
+    genre = "rnb";
+    bpm = 84;
+    design = "rain"
+    cscheme = 'test';
+    valence = 5.53;
+    danceability = 6.53;
+    energy = 5.3;
+  }
+  
+  if(song == "SummertimeSadness"){
+    bpm = 127;
+    design = "rotating"
+    valence = 1.1;
+    energy = 8.1;
+    cscheme = 'gray';
+    danceability = 5.72;
+  }
+  
+  
+  if(song == "Starboy"){
+    bpm = 187;
+    valence = 4.86;
+    danceability = 6.79;
+    energy = 5.87;
+  }
+  
+  if(song == "good 4 u"){
+    bpm = 167;
+    danceability = 5.63;
+    energy = 6.64;
+    valence = 6.88;
+    
+  }
+  
+  
+  if(song == "Hold On We're Going Home"){
+    genre = "rnb";
+    bpm = 101;
+    valence = 2.87;
+    danceability = 7.76;
+    energy = 4.13;
+  }
+  
+  
+  if(song == "Diamonds"){
+    bpm = 92;
+    valence = 3.93;
+    energy = 7.1;
+    danceability = 5.64;
+  }
 
 
 
@@ -301,6 +352,34 @@ if(song == "Diamonds"){
 
 if(bpm > 150){
   bpm = bpm/2;
+}
+
+// Set up the raindrops
+var drops = [];
+for (var i = 0; i < 50; i++) {
+drops.push({
+x: Math.random() * canvas.width,
+y: Math.random() * canvas.height,
+speed: 2 + Math.random() * 3,
+length: 5 + Math.random() * 10
+});
+}
+
+// Draw the raindrops
+function draw() {
+//ctx.clearRect(0, 0, canvas.width, canvas.height);
+if(song == 'breathe'){
+ ctx.fillStyle = 'orange';
+ ctx.shadowColor = 'orange';
+}
+for (var i = 0; i < drops.length; i++) {
+var drop = drops[i];
+ctx.fillRect(drop.x, drop.y, 2, drop.length);
+drop.y += drop.speed;
+if (drop.y > canvas.height) {
+drop.y = -drop.length;
+}
+}
 }
 
 
@@ -342,59 +421,156 @@ canvas.width = innerWidth;
 
 
 
+var cscheme;
+
 //ANIMATION LOOP
 function loop(timeNow) {
 song = songname;
 if(song == "Summer"){
     genre = "edm";
     bpm = 128;
-    design = "rotating";
-    valence = 8.45;
-    danceability = 5.96;
+    design = "nebula";
+    cscheme = 'party';
+    valence = 8.5;
+    danceability = 9;
     energy = 8.56;
   }
+
+  if(song == ""){
+    genre = "edm";
+    bpm = 0;
+    valence = 0;
+    danceability = 0;
+    energy = 0;
+
+}
   
   if(song == "BlindingLights"){
     ctx.strokeStyle = red;
     ctx.shadowStyle = red;
     bpm = 172;
     design = "lightning";
+    cscheme = 'redblue';
     danceability = 5.1;
     energy = 7.3;
     valence = 3.3;
+  }
+
+  if(song == "StarryNight"){
+    bpm = 123;
+    design = "rotating";
+    cscheme = 'tropics';
+    danceability = 5.1;
+    energy = 7.3;
+    valence = 55;
   }
   
   if(song == "telepatia"){
     genre = "rnb";
     bpm = 84;
     design = "rain"
-    valence = 5.53;
+    cscheme = 'test';
+    valence = 11;
     danceability = 6.53;
     energy = 5.3;
   }
   
-  if(song == "Summertime Sadness"){
+  if(song == "SummertimeSadness"){
     bpm = 127;
-    design = "rotating"
+    design = "nebula"
     valence = 1.1;
     energy = 8.1;
+    cscheme = 'gray';
     danceability = 5.72;
   }
-  
-  
-  if(song == "Starboy"){
-    bpm = 187;
-    valence = 4.86;
+  if(song == "YoureTheOne"){
+    bpm = 118;
+    design = "rotating"
+    valence = 18;
+    energy = 8.1;
+    cscheme = 'fire';
+    danceability = 9;
+  }
+
+  if(song == "FireForYou"){
+    bpm = 102;
+    design = "rain"
+    cscheme = 'fire';
+    valence = 66;
     danceability = 6.79;
     energy = 5.87;
   }
   
-  if(song == "good 4 u"){
-    bpm = 167;
-    danceability = 5.63;
-    energy = 6.64;
-    valence = 6.88;
-    
+  
+  if(song == "Danielle"){
+    bpm = 130;
+    design = "nebula"
+    cscheme = 'blue';
+    valence = 1010;
+    danceability = 9;
+    energy = 5.87;
+  }
+
+
+  
+  if(song == "WhenIComeAround"){
+    bpm = 98;
+    design = "lightning";
+    cscheme = 'tropics';
+    danceability = 5.1;
+    energy = 7.3;
+    valence = 11;
+  
+  }
+
+  if(song == "Dreams"){
+    bpm = 120;
+    design = "rain";
+    cscheme = 'redblue';
+    danceability =  3;
+    energy = 7.3;
+    valence = 66;
+  
+  }
+
+  if(song == "Superstition"){
+    bpm = 102;
+    design = "rotating";
+    cscheme = 'party';
+    danceability =  9;
+    energy = 7.3;
+    valence = 66;
+  
+  }
+
+  if(song == "Breathe"){
+    bpm = 64;
+    design = "shower";
+    cscheme = 'sunset';
+    danceability =  3;
+    energy = 7.3;
+    valence = 123;
+  
+  }
+
+  if(song == "DancingQueen"){
+    bpm = 101;
+    design = "nebula";
+    cscheme = 'redblue';
+    danceability =  5;
+    energy = 7.3;
+    valence = 66;
+  
+  }
+
+  if(song == "Genesis"){
+    bpm = 166;
+    design = "lightning";
+    cscheme = 'sunset';
+    danceability =  1;
+    energy = 7.3;
+    valence = 66;
+  
   }
   
   
@@ -405,14 +581,63 @@ if(song == "Summer"){
     danceability = 7.76;
     energy = 4.13;
   }
+
+  if(song == "Ivy"){
+    genre = "rnb";
+    design = "shower";
+    cscheme = 'redblue';
+    bpm = 58;
+    valence = 44;
+    danceability = 0;
+    energy = 4.13;
+  }
   
   
-  if(song == "Diamonds"){
-    bpm = 92;
-    valence = 3.93;
+  if(song == "EverythingIWanted"){
+    bpm = 120;
+    design = "shower";
+    cscheme = 'gray';
+    valence = 1.1;
     energy = 7.1;
     danceability = 5.64;
   }
+
+  if(song == "TheColorViolet"){
+    bpm = 105;
+    design = "rain";
+    cscheme = 'redblue';
+    valence = 19;
+    energy = 7.1;
+    danceability = 5.64;
+  }
+
+  if(song == "GoodDays"){
+    bpm = 61;
+    design = "shower";
+    cscheme = 'tropics';
+    valence = 55;
+    energy = 7.1;
+    danceability = 3;
+  }
+  if(song == "Hypnotize"){
+    bpm = 94;
+    design = "lightning";
+    cscheme = 'redblue';
+    valence = 18;
+    energy = 7.1;
+    danceability = 8;
+  }
+  if(song == "Tunnel"){
+    bpm = 120;
+    design = "rotating";
+    cscheme = 'sunset';
+    valence = 18;
+    energy = 7.1;
+    danceability = 5.64;
+  }
+  
+  
+  
   
   
   
@@ -420,7 +645,9 @@ if(song == "Summer"){
     bpm = bpm/2;
   }
   
-  
+  ctx5.rect(0, 0, 1500, 100);
+  // ctx5.stroke();
+
   
   
   
@@ -446,7 +673,7 @@ if(song == "Summer"){
   }
   
   
-  for(var i = 0; i < bpm * .98; i++){
+  for(var i = 0; i < bpm; i++){
     fc++;
   }
   //console.log(fc);
@@ -455,28 +682,33 @@ if(song == "Summer"){
     ctx.shadowBlur = 0;
     ctx.globalCompositeOperation = "source-over";
   }else if (design == "rotating"){
+    particlesArray.forEach((particle) => particle.rotate2());
+    particlesArray2.forEach((particle2) => particle2.rotate2());
+    //ctx.globalCompositeOperation = "source-over";
+
+  }else if (design == "orbit"){
     particlesArray.forEach((particle) => particle.rotate());
     particlesArray2.forEach((particle2) => particle2.rotate());
     //ctx.globalCompositeOperation = "source-over";
 
+  }else if(design == "shower"){
+    draw();
   }
-  else if (design == "rain"){
+  else if (design == "nebula"){
     //STARS
 
     timeDelta = timeNow - timeLast;
     timeLast = timeNow;
-    // // space background
-    // context.fillStyle = COLOR_SPACE;
-    // context.fillRect(0, 0, canvas.width, canvas.height);
+    
     // draw the stars
     context.fillStyle = COLOR_STARS;
     for (let i = 0; i < STAR_NUM; i++) {
         context.beginPath();
-        context.arc(stars[i].x, stars[i].y, stars[i].r, 0, Math.PI * 2);
+        context.arc(stars[i].x, stars[i].y, stars[i].r, 0, Math.PI * 4);
         context.fill();
 
         // update the star's x position
-        stars[i].x += stars[i].xv * timeDelta * 0.001;
+        stars[i].x += stars[i].xv;
 
         // reposition the star to the other side if it goes off screen
         if (stars[i].x < 0 - stars[i].r) {
@@ -486,7 +718,7 @@ if(song == "Summer"){
         }
                 
         // update the star's y position
-        stars[i].y += stars[i].yv * timeDelta * 0.001;
+        stars[i].y += stars[i].yv * timeDelta * 0.01;
 
         // reposition the star to the other side if it goes off screen
         if (stars[i].y < 0 - stars[i].r) {
@@ -495,24 +727,58 @@ if(song == "Summer"){
             stars[i].y = 0 - stars[i].r;
                 }
         }
+    
+    }else if (design == "rain"){
+            //STARS
+        
+            timeDelta = timeNow - timeLast;
+            timeLast = timeNow;
+            
+            // draw the stars
+            context.fillStyle = COLOR_STARS;
+            for (let i = 0; i < STAR_NUM; i++) {
+                context.beginPath();
+                context.arc(stars[i].x, stars[i].y, stars[i].r, 0, Math.PI * 2);
+                context.fill();
+        
+                // update the star's x position
+                stars[i].x += stars[i].xv * timeDelta * 0.001;
+        
+                // reposition the star to the other side if it goes off screen
+                if (stars[i].x < 0 - stars[i].r) {
+                stars[i].x = canvas.width + stars[i].r;
+                } else if (stars[i].x > canvas.width + stars[i].r) {
+                            stars[i].x = 0 - stars[i].r;
+                }
+                        
+                // update the star's y position
+                stars[i].y += stars[i].yv * timeDelta * 0.001;
+        
+                // reposition the star to the other side if it goes off screen
+                if (stars[i].y < 0 - stars[i].r) {
+                stars[i].y = canvas.height + stars[i].r;
+                } else if (stars[i].y > canvas.height + stars[i].r) {
+                    stars[i].y = 0 - stars[i].r;
+                        }
+                }
+    
 
   }
 
 
   
-  
     
   //BACKGROUND
 
-  if(valence > 4 && valence <= 6){
+  if(cscheme == 'test'){
     context2.fillStyle = `rgb(
-    ${Math.floor(150 -20 * gm)},
-    ${Math.floor(50 - 20 * gm)},
-    ${Math.floor(170 +20 * gm)}, 0.05)`;
+    ${Math.floor(150 + 20 * gm)},
+    ${Math.floor(50 + 20 * gm)},
+    ${Math.floor(170 - 20 * gm)}, 0.05)`;
     //pink: 255,20,147
     //gold: 255,215,0
     context2.fillRect(0, 0, canvas.width, canvas.height);
-} else if(valence > 2 && valence <=4){
+} else if(cscheme == 'redblue'){
     context2.fillStyle = `rgb(
     ${Math.floor(10 + 10* gm)},
     ${Math.floor(1 + 1 * gm)},
@@ -520,7 +786,15 @@ if(song == "Summer"){
     //pink: 255,20,147
     //gold: 255,215,0
     context2.fillRect(0, 0, canvas.width, canvas.height);
-}else if(valence > 6 && valence <= 8){
+}else if(cscheme == 'tropics'){
+  context2.fillStyle = `rgb(
+  ${Math.floor(0 + 40 * gm)},
+  ${Math.floor(190 + 10 * gm)},
+  ${Math.floor(200 - 20 *  gm)}, 0.05)`;
+  //pink: 255,20,147
+  //gold: 255,215,0
+  context2.fillRect(0, 0, canvas.width, canvas.height);
+}else if(cscheme == 'red'){
       context2.fillStyle = `rgb(
       ${Math.floor(255)},
       ${Math.floor(20 + 50 * gm)},
@@ -528,15 +802,23 @@ if(song == "Summer"){
       //pink: 255,20,147
       //gold: 255,215,0
       context2.fillRect(0, 0, canvas.width, canvas.height);  
-}else if(valence > 8 && valence <= 10){
+}else if(cscheme == 'sunset'){
+  context2.fillStyle = `rgb(
+  ${Math.floor(0 + 2*gm)},
+  ${Math.floor(0 + 3 * gm)},
+  ${Math.floor(0 + 10 * gm)}, 0.05)`;
+  //pink: 255,20,147
+  //gold: 255,215,0
+  context2.fillRect(0, 0, canvas.width, canvas.height);  
+}else if(cscheme == 'party'){
     context2.fillStyle = `rgb(
     ${Math.floor(150 + 25 * gm)},
     ${Math.floor(250 - 20 * gm)},
-    ${Math.floor(150 - 20 * gm)}, 0.08)`;
+    ${Math.floor(150 - 10 * gm)}, 0.08)`;
     //pink: 255,20,147
     //gold: 255,215,0
     context2.fillRect(0, 0, canvas.width, canvas.height);
-}else{
+}else if (cscheme == 'gray'){
     context2.fillStyle = `rgb(
     ${Math.floor(0 + 10 * gm)},
     ${Math.floor(0 + 10 * gm)},
@@ -544,6 +826,22 @@ if(song == "Summer"){
     //pink: 255,20,147
     //gold: 255,215,0
     context2.fillRect(0, 0, canvas.width, canvas.height);
+}else if (cscheme == 'blue'){
+  context2.fillStyle = `rgb(
+  ${Math.floor(100 - 24 * gm)},
+  ${Math.floor(10 - 110 * gm)},
+  ${Math.floor(10 + 50 * gm)}, 0.05)`;
+  //pink: 255,20,147
+  //gold: 255,215,0
+  context2.fillRect(0, 0, canvas.width, canvas.height);
+}else if (cscheme == 'fire'){
+  context2.fillStyle = `rgb(
+  ${Math.floor(180 + 24 * gm)},
+  ${Math.floor(10 + 1 * gm)},
+  ${Math.floor(10 + 50 * gm)}, 0.05)`;
+  //pink: 255,20,147
+  //gold: 255,215,0
+  context2.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 //LIGHTNING
@@ -566,7 +864,7 @@ if(song == "Summer"){
  // if(fc > 1800/bpm){
   //   gm = 2;
   // }
-  if(fc >= 3600){
+  if(fc >= 3550){
     fc = 0;
     gm = 20;
   }
@@ -580,7 +878,10 @@ if(song == "Summer"){
   //CENTER ELLIPSE
   if(valence <= 2){
     context2.fillStyle = 'white';
-    context2.shadowColor = "white";  
+    context2.shadowColor = `rgb(
+      ${Math.floor(255 - 1* gm)},
+      ${Math.floor(252 - 5 * gm)},
+      ${Math.floor(250  * gm)}`;;  
   }else if(valence > 4 && valence <= 6){
     context2.shadowColor = "pink";    
     context2.fillStyle = 'white';
@@ -593,15 +894,104 @@ if(song == "Summer"){
   }else if(valence > 8 && valence <= 10){
     context2.fillStyle = 'white';
     context2.shadowColor = "yellow";
-  }
+  
+  
+  }else if(valence == 66){
+    context2.fillStyle = `rgb(
+      ${Math.floor(255 + 10* gm)},
+      ${Math.floor(252 + 1 * gm)},
+      ${Math.floor(225 - 2 * gm)}`;;
+    context2.shadowColor = "orange";
+  }else if(valence == 123){
+    context2.fillStyle = `rgb(
+      ${Math.floor(255 + 10* gm)},
+      ${Math.floor(252 + 1 * gm)},
+      ${Math.floor(225 - 2 * gm)}`;;
+    context2.shadowColor = "black";
+  }else if(valence == 19){
+    context2.shadowColor = `rgb(
+      ${Math.floor(0 + 10* gm)},
+      ${Math.floor(0 + - 10 * gm)},
+      ${Math.floor(0 + 20 * gm)}`;;
+    context2.fillStyle = context2.fillStyle = `rgb(
+      ${Math.floor(255 + 10* gm)},
+      ${Math.floor(252 + 1 * gm)},
+      ${Math.floor(225 - 2 * gm)}`;;
+
+
+    }
+    else if(valence == 44){
+      context2.shadowColor = `rgb(
+        ${Math.floor(230 + 5* gm)},
+        ${Math.floor(202 - 1 * gm)},
+        ${Math.floor(225 - 2 * gm)}`;
+      context2.fillStyle = "white";
+  
+  
+      }
+
+      else if(valence == 55){
+        context2.shadowColor = `rgb(
+          ${Math.floor(200 + 10* gm)},
+          ${Math.floor(230 + 1 * gm)},
+          ${Math.floor(200 + 2 * gm)}`;;
+        context2.fillStyle = `rgb(
+          ${Math.floor(255 + 10* gm)},
+          ${Math.floor(252 + 1 * gm)},
+          ${Math.floor(225 - 2 * gm)}`;;
+    
+    
+        }
+
+        else if(valence == 1010){
+          context2.shadowColor = `rgb(
+            ${Math.floor(255 - 10* gm)},
+            ${Math.floor(240 + 1 * gm)},
+            ${Math.floor(225 + 2 * gm)}`;;
+          context2.fillStyle = `rgb(
+            ${Math.floor(235 + 10* gm)},
+            ${Math.floor(235 + 5 * gm)},
+            ${Math.floor(235 + 5 * gm)}`;;
+      
+      
+          }
+
+          else if(valence == 11){
+            context2.shadowColor = `rgb(
+              ${Math.floor(201 + 15* gm)},
+              ${Math.floor(150 + 3 * gm)},
+              ${Math.floor(150 + 1 * gm)}`;;
+            context2.fillStyle = `rgb(
+              ${Math.floor(250 + 3 * gm)},
+              ${Math.floor(250 - 1 * gm)},
+              ${Math.floor(250 - 1 * gm)}`;;
+        
+        
+            }
+
+            else if(valence == 18){
+              context2.shadowColor = `rgb(
+                ${Math.floor(201 - 10* gm)},
+                ${Math.floor(110 + 10 * gm)},
+                ${Math.floor(150 + 2 * gm)}`;;
+              context2.fillStyle = `rgb(
+                ${Math.floor(250 - 3 * gm)},
+                ${Math.floor(250 - 2 * gm)},
+                ${Math.floor(225 - 2 * gm)}`;;
+          
+          
+              }
 
   context2.beginPath();
   if(danceability > 7 && danceability <= 10){
     context2.shadowBlur = gm + 10;
-    context2.ellipse(canvas.width/2, canvas.height/2, 150 + gm * 2, 150 + gm * 2, Math.PI / 4, 0, 2* Math.PI);
+    context2.ellipse(canvas.width/2, canvas.height/2, 150 + gm * 3, 150 + gm * 3, Math.PI / 4, 0, 2* Math.PI);
   }else if(danceability > 4 && danceability <= 7){
     context2.shadowBlur = gm + 10;
-    context2.ellipse(canvas.width/2, canvas.height/2, 150 + gm, 150 + gm, Math.PI / 4, 0, 2* Math.PI);
+    context2.ellipse(canvas.width/2, canvas.height/2, 150 + gm * 1.5, 150 + gm * 1.5, Math.PI / 4, 0, 2* Math.PI);
+  }else if (danceability > 2 && danceability <= 4){
+    context2.shadowBlur = gm + 10;
+    context2.ellipse(canvas.width/2, canvas.height/2, 150 + gm * 0.8, 150 + gm * 0.8, Math.PI / 4, 0, 2* Math.PI);
   }else{
     context2.shadowBlur = gm + 20;
     context2.ellipse(canvas.width/2, canvas.height/2, 150, 150, Math.PI / 4, 0, 2* Math.PI);
@@ -698,7 +1088,7 @@ function Particle(x, y, particleTrailWidth, strokeColor, rotateSpeed) {
     this.rotateSpeed = rotateSpeed * (bpm / 60);
     this.t = Math.random() * 400;
   
-    this.rotate = () => {
+    this.rotate2 = () => {
       const ls = {
         x: this.x,
         y: this.y,
@@ -715,6 +1105,24 @@ function Particle(x, y, particleTrailWidth, strokeColor, rotateSpeed) {
       //context2.fill();
   
     };
+
+    this.rotate = () => {
+        const ls = {
+          x: this.x,
+          y: this.y,
+        };
+        this.theta += .5;
+        this.x = canvas.width/2 + Math.cos(this.theta) * this.t * 5;
+        this.y = canvas.height/2 + Math.sin(this.theta) * this.t * 2;
+        context.beginPath();
+        context.lineWidth = this.particleTrailWidth * 2 * (1.1 + gm/10);
+        context.moveTo(ls.x, ls.y);
+        context.lineTo(this.x, this.y);
+        context.stroke();
+        //context.strokeStyle = this.strokeColor;
+        //context2.fill();
+    
+      };
   }
   
   function Particle2(x, y, particleTrailWidth, strokeColor, rotateSpeed) {
@@ -726,13 +1134,13 @@ function Particle(x, y, particleTrailWidth, strokeColor, rotateSpeed) {
     this.rotateSpeed = rotateSpeed;
     this.t = Math.random() * 400;
   
-    this.rotate = () => {
+    this.rotate2 = () => {
       
       const ls = {
         x: this.x,
         y: this.y,
       };
-      this.theta += this.rotateSpeed;
+      this.theta += this.rotateSpeed * gm/6;
       this.x = canvas.width/2 + Math.cos(this.theta) * this.t * 5;
       this.y = canvas.height/2 + Math.sin(this.theta) * this.t * 2;
       context2.beginPath();
@@ -746,5 +1154,26 @@ function Particle(x, y, particleTrailWidth, strokeColor, rotateSpeed) {
       
   
     };
+
+    this.rotate = () => {
+      
+        const ls = {
+          x: this.x,
+          y: this.y,
+        };
+        this.theta += .1;
+        this.x = canvas.width/2 + Math.cos(this.theta) * this.t * 1;
+        this.y = canvas.height/2 + Math.sin(this.theta) * this.t * 2;
+        context2.beginPath();
+        context2.lineWidth = this.particleTrailWidth * 2 * (1.1 + gm/10);
+        context2.moveTo(ls.x, ls.y);
+        context2.lineTo(this.x, this.y);
+        context2.stroke();
+        context2.strokeStyle = this.strokeColor;
+        //context2.strokeStyle = this.strokeColor;
+        //context2.fill();
+        
+    
+      };
   }
 
